@@ -254,3 +254,14 @@
   });
 
 })()
+
+function database_send() {
+  var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+  var subject = document.getElementById("subject").value;
+  firebase.database().ref().child("data").set({
+    Name: name,
+    Email: email,
+    Subject: subject,
+  });
+}
