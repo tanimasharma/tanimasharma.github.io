@@ -259,9 +259,19 @@ function database_send() {
   var name = document.getElementById("name").value;
   var email = document.getElementById("email").value;
   var subject = document.getElementById("subject").value;
-  firebase.database().ref().child("data").set({
+  var message = document.getElementById("message").value;
+  firebase.database()
+  .ref()
+  .child("data")
+  .push({
     Name: name,
     Email: email,
     Subject: subject,
-  });
+    Message: message
+  })
+  .then(
+    (onResolved) => {
+     window.alert("Message sent successfully.")   
+    }
+  );
 }
